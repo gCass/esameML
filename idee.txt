@@ -8,7 +8,12 @@ A: immagine flattata => mi aspetto prestazioni scarsissime <-- SCARTATO TROPPO G
 B: edge direction histogram
 C: cooccurrence matrix
 
+(Valutare se provare delle normalizzazioni)
+
+
 - Modelli che possiamo provare:
-A: KSVM con gaussiano
+A: KSVM con gaussiano (avendo poche classi, strategia OVO)
 B: MLP lineare (equivalente a multinomial logistic regression)
 C: CCN (utilizzo laaa rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
+
+
