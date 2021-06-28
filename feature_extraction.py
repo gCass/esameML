@@ -12,7 +12,7 @@ print(classes)
 
 feature_function_list = ["edge_direction_histogram", "cooccurrence_matrix"]
 if len(sys.argv) > 1:
-	chosen = sys.argv[1]
+	chosen = int(sys.argv[1])
 else:
 	chosen = 0
 feature_function = feature_function_list[chosen] 
