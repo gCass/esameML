@@ -10,7 +10,7 @@ classes = os.listdir("dataset/train/")
 classes.sort()
 print(classes)
 
-feature_function_list = ["edge_direction_histogram", "cooccurrence_matrix"]
+feature_function_list = ["color_histogram","edge_direction_histogram", "cooccurrence_matrix","rgb_cooccurrence_matrix"]
 if len(sys.argv) > 1:
 	chosen = int(sys.argv[1])
 else:
@@ -46,16 +46,14 @@ def process_directory(path):
 			#All of this functions take as parameter an image, plus some information like how 
 			#large are the bins to compute the histograms.
 			#We will use the color hinstogram
-			# if feature_function == "color_histogram":
-			# 	features = image_features.color_histogram(image)
+			if feature_function == "color_histogram":
+				features = image_features.color_histogram(image)
 			if feature_function == "edge_direction_histogram":
 				features = image_features.edge_direction_histogram(image)
 			elif feature_function == "cooccurrence_matrix":				
 				features = image_features.cooccurrence_matrix(image)
-			elif feature_function == "flattening":
-				features = image
-			# elif feature_function == "rgb_cooccurrence_matrix":
-			# 	features = image_features.rgb_cooccurrence_matrix(image)			
+			elif feature_function == "rgb_cooccurrence_matrix":
+				features = image_features.rgb_cooccurrence_matrix(image)			
 
 			#The returns an array of 3 rows and 64 columns.
 			#Each row is an histogram for each color. 
