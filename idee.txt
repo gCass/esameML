@@ -1,0 +1,14 @@
+## Idee
+
+- Giustificare che il colore non è un opzione utile. Dire qualcosa riguardo al fatto che tutte le immagini sono su sfondo verde e tutte le mani sono orientate nella stessa direzione. Bisognerebbe applicare qualcosa indipendente dal colore che definisce i contorni dell'immagine, come l'edge direction histogram oppure la cooccurrence matrix.
+Mi aspetto che il primo funzioni un attimo meglio dell'altro.
+
+- Creare uno script di pipeline che faccia tre versioni delle features per ogni immagine:
+A: immagine flattata => mi aspetto prestazioni scarsissime
+B: edge direction histogram
+C: cooccurrence matrix
+
+- Modelli che possiamo provare:
+A: KSVM con gaussiano
+B: MLP lineare (equivalente a multinomial logistic regression)
+C: CCN (utilizzo la rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
