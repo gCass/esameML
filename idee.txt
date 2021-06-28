@@ -11,4 +11,4 @@ C: cooccurrence matrix
 - Modelli che possiamo provare:
 A: KSVM con gaussiano
 B: MLP lineare (equivalente a multinomial logistic regression)
-C: CCN (utilizzo laa rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
+C: CCN (utilizzo laaa rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
