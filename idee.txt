@@ -4,7 +4,7 @@
 Mi aspetto che il primo funzioni un attimo meglio dell'altro.
 
 - Creare uno script di pipeline che faccia tre versioni delle features per ogni immagine:
-A: immagine flattata => mi aspetto prestazioni scarsissime
+A: immagine flattata => mi aspetto prestazioni scarsissime <-- SCARTATO TROPPO GRANDI
 B: edge direction histogram
 C: cooccurrence matrix
 
