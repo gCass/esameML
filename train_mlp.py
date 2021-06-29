@@ -65,6 +65,17 @@ data = np.loadtxt("dataset_processed/validation-%s.txt.gz" % (feature_function))
 Xval = data[:, :-1]
 Yval = data[:, -1].astype(int)
 
+## CHECK IF MODELNAME ALREADY PRESENT IN THE DICT, IF IT IS SKIP
+modelname = "mlp-feature_func=%s-layers=%s-lr=%s-epochs=%d-batchsize=%d"\
+			 % (feature_function, str(layers), str(lr), epochs, batch_size) 
+
+f = "results/mlp_results.json"
+results = dict_from_json(f)
+if modelname in results:
+	print("already done, skip")
+	exit()
+
+
 ## TRAIN NETWORK
 
 for epoch in range(epochs):
@@ -80,13 +91,8 @@ for epoch in range(epochs):
 
 ## SAVE NETWORK
 
-modelname = "mlp-feature_func=%s-layers=%s-lr=%s-epochs=%d-batchsize=%d"\
-			 % (feature_function, str(layers), str(lr), epochs, batch_size) 
 net.save("models/%s.npz" % modelname) 
 
 ## SAVE ACCURACY RESULTS
-
-f = "results/mlp_results.json"
-results = dict_from_json(f)
 results[modelname] = {"train": train_acc, "validation": valid_acc}
 dict_to_json(f, results)
