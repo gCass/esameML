@@ -12,9 +12,6 @@ for chosen_number in range(0, 4):
 		for batch_size in batch_sizes:
 			for lr in lrs:
 				print("Doing ",chosen_number, epochs, batch_size, lr)
-				lambda_ = random.choice(lambdas)
-				gamma = random.choice(gammas)
-				lr = random.choice(lrs)
 				os.system('python3 train_mlp.py %d %d %d %f %d' % (chosen_number, epochs, batch_size, lr, 0))
 
 # NON LINEAR
