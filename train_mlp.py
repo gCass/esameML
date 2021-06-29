@@ -27,7 +27,7 @@ nclasses = Ytrain.max() + 1
 
 layers = [inputl, nclasses]
 
-if len(sys.argv2) > 2:
+if len(sys.argv) > 2:
 	
 	epochs = int(sys.argv[2])
 	batch_size = int(sys.argv[3])
