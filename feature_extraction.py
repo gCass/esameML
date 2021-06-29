@@ -35,7 +35,7 @@ else:
 feature_function = feature_function_list[chosen] 
 
 def process_directory(path):
-	net = pvml.CNN.load("cake-classification/pvmlnet.npz")
+	net = pvml.CNN.load("pretrained_network/pvmlnet.npz")
 	all_features = []
 	all_labels = []
 	class_labels_counter = 0
