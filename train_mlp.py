@@ -34,8 +34,11 @@ if len(sys.argv > 2):
 	lr = float(sys.argv[4])
 
 	#To use hidden layers, set a argv[2] to 1
-	hasHidden = (sys.argv[5] == 1)
-	
+	if len(sys.argv) > 6:
+		hasHidden = (sys.argv[5] is not None and sys.argv[5] == 1)
+	else:
+		hasHidden = False
+
 	#Extract hidden layers, are passed in format: N1_N2_..._NM
 	if hasHidden:
 		s = sys.argv[6]
