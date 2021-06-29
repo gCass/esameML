@@ -6,11 +6,28 @@ import os
 import image_features
 import sys
 
+## Define a fuction for extracting a features as output of a CNN pretrained
+
+def extract_neural_features(im, net, previous_layers = 0, different_level_deep = False):
+	im = im[None, :, :, :]
+	activations = net.forward(im)
+	features  = activations[-3-previous_layers]
+	if not different_level_deep:
+		features = features.reshape(-1)
+	else:
+		#Per ogni channel, faccio la media lungo gli assi 0 e 1 che sono riga e colonna
+		#dell'immagine 
+		features = np.average(features[0,:,:,:], axis=(0,1))
+
+	return features
+
 classes = os.listdir("dataset/train/")
 classes.sort()
 print(classes)
 
-feature_function_list = ["color_histogram","edge_direction_histogram", "cooccurrence_matrix","rgb_cooccurrence_matrix"]
+feature_function_list = ["color_histogram","edge_direction_histogram", \
+						 "cooccurrence_matrix","rgb_cooccurrence_matrix",\
+						 "deepfeatures"]
 if len(sys.argv) > 1:
 	chosen = int(sys.argv[1])
 else:
@@ -18,6 +35,7 @@ else:
 feature_function = feature_function_list[chosen] 
 
 def process_directory(path):
+	net = pvml.CNN.load("cake-classification/pvmlnet.npz")
 	all_features = []
 	all_labels = []
 	class_labels_counter = 0
@@ -29,23 +47,12 @@ def process_directory(path):
 		#Now for each image in the folder we load image, extract feature
 		for imagename in image_files:
 			#For reading the image we can use an utility function of matplotlib
-			image = plt.imread(class_path + "/" + imagename)
-			# print(image.shape)
-			#We see the shape is of 3 dimensions, because images has 224x224 resolution and
-			#3 channels (rgb)
+			image = plt.imread(class_path + "/" + imagename)			
 			#The image will be loaded with an encoding of 1 byte per any channel integer number. 
 			#We prefer to work with floating point number between [0,1]. 
 			#To do this, divide by 255
 			image = image / 255
-			#To check all is ok we display the images.
-			# plt.imshow(image)
-			# plt.show()
-			#Now we have to extract the feature from image. In the archive cake-classification
-			#there is a script that do this for us. We have a fuction for computing color
-			#histograms, gray-level-cooccurrency matrix, a color cooccurrency matrix and another.
-			#All of this functions take as parameter an image, plus some information like how 
-			#large are the bins to compute the histograms.
-			#We will use the color hinstogram
+			#Extract different features by choice
 			if feature_function == "color_histogram":
 				features = image_features.color_histogram(image)
 			if feature_function == "edge_direction_histogram":
@@ -53,13 +60,11 @@ def process_directory(path):
 			elif feature_function == "cooccurrence_matrix":				
 				features = image_features.cooccurrence_matrix(image)
 			elif feature_function == "rgb_cooccurrence_matrix":
-				features = image_features.rgb_cooccurrence_matrix(image)			
+				features = image_features.rgb_cooccurrence_matrix(image)
+			elif feature_function == "deepfeatures":
+				features = extract_neural_features(image, net) 	
 
-			#The returns an array of 3 rows and 64 columns.
-			#Each row is an histogram for each color. 
-			#We reshape a vector to be a single vector
-			#You shuld pass the size of the resphaped array, but passing 
-			#-1 as argument it compute automatically
+			# reshape to get a row vector
 			features = features.reshape(-1) 
 			#Give a look at this features 
 			# plt.bar(np.arange(features.shape[0]), features)
