@@ -10,7 +10,7 @@ gammas = [0.001, 0.002, 0.003, 0.01, 0.02, 0.03, 0.1 , 0.2, 0.3]
 lrs = [0.001, 0.002, 0.003, 0.01, 0.02, 0.03, 0.1 , 0.2, 0.3]
 
 
-for chosen_number in range(0, 4):
+for chosen_number in range(0, 5):
 	## EXTRACT RANDOMLY 3 TIMES FOR EACH CHOSEN NUMBER A SET OF HYPERPARAMETERS
 	for i in range(0,3):
 		print("Doing ",chosen_number, i)
