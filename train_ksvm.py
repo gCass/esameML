@@ -48,7 +48,7 @@ class OVO_KSVM:
 
 
 # print("ciao")
-feature_function_list = ["color_histogram","edge_direction_histogram", "cooccurrence_matrix","rgb_cooccurrence_matrix"]
+feature_function_list = ["color_histogram","edge_direction_histogram", "cooccurrence_matrix","rgb_cooccurrence_matrix", "deepfeatures"]
 if len(sys.argv) > 1:
 	chosen = int(sys.argv[1])
 else:

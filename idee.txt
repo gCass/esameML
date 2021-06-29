@@ -7,6 +7,7 @@ Mi aspetto che il primo funzioni un attimo meglio dell'altro.
 A: immagine flattata => mi aspetto prestazioni scarsissime <-- SCARTATO TROPPO GRANDI
 B: edge direction histogram
 C: cooccurrence matrix
+D: In realtà li ho usati tutti
 
 (Valutare se provare delle normalizzazioni)
 
@@ -14,6 +15,11 @@ C: cooccurrence matrix
 - Modelli che possiamo provare:
 A: KSVM con gaussiano (avendo poche classi, strategia OVO)
 B: MLP lineare (equivalente a multinomial logistic regression)
-C: CCN (utilizzo laaa rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
+C: CCN (non mi ricordo come si chiama la tecnica) (utilizzo laaa rete che abbiamo utilizzato per la cake classification, prendo i risultati dell'ultimo e ci applico un MLP lineare)
 
+Alla fine di questo giro, la MLP vincitrice è:
+"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.002-epochs=10000-batchsize=10": {
+    "train": 1.0,
+    "validation": 0.9933333333333333
+ },
 
