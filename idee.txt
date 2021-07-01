@@ -23,3 +23,9 @@ Alla fine di questo giro, la MLP vincitrice è:
     "validation": 0.9933333333333333
  },
 
+Alla fine la KSVM con deepfeature da un risultato interessante:
+"ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures": {
+    "train": 0.9242584745762712,
+    "validation": 0.9666666666666667
+  },
+Potrebbe essere interessante provare valori in questo range con lr o col kparam
