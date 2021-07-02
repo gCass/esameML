@@ -32,3 +32,8 @@ Potrebbe essere interessante provare valori in questo range con lr o col kparam
 
 VEDIAMO SE POSSIAMO USARE LA MIA MANO SU SFONDO BIANCO E VEDIAMO COSA SUCCEDE
 
+CALCOLARE OLTRE ALL'ACCARACY LA PRECISIONE E RECALL DEL MODELLO DEFINITIVO PER VALUTARNE LE ABILITA'
+
+
+
+Si nota che confonde le scissors con i paper e viceversa, questo dovuto al fatto che cambia solo il numero di dita sollevate.

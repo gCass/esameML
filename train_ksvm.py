@@ -85,12 +85,12 @@ model.save("models/ksvm_"+s+".pkl")
 
 modelname = "ksvm_"+s+"_"+feature_function
 
-##LOAD VALIDATION DATA
+## LOAD VALIDATION DATA
 data = np.loadtxt("dataset_processed/validation-%s.txt.gz" % (feature_function))
 Xval = data[:, :-1]
 Yval = data[:, -1].astype(int)
 
-##GET VALIDATION ACCURACY
+## GET VALIDATION ACCURACY
 pred_label, _ = model.inference(Xval, Yval)
 validation_acc = (Yval == pred_label).mean()
 
