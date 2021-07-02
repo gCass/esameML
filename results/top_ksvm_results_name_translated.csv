@@ -1,0 +1,6 @@
+,model,kfun,lambda,kparam,lr,function,Unnamed: 0,index,train,validation
+0,ksvm,rbf,0.03,0.03,0.1,deepfeatures,0,ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures,0.9242584745762712,0.966666666666666
+1,ksvm,rbf,0.001,0.01,0.1,color_histogram,1,ksvm_kfun=rbf_lambda_=0.001_kparam=0.01_lr=0.001__color_histogram,0.344279661016949,0.333333333333333
+2,ksvm,rbf,0.001,0.1,0.1,color_histogram,2,ksvm_kfun=rbf_lambda_=0.001_kparam=0.1_lr=0.02__color_histogram,0.331567796610169,0.333333333333333
+3,ksvm,rbf,0.3,0.001,0.1,color_histogram,3,ksvm_kfun=rbf_lambda_=0.3_kparam=0.001_lr=0.01__color_histogram,0.344279661016949,0.333333333333333
+4,ksvm,rbf,0.002,0.2,0.1,edge_direction_histogram,4,ksvm_kfun=rbf_lambda_=0.002_kparam=0.2_lr=0.03__edge_direction_histogram,0.324152542372881,0.333333333333333

@@ -1,5 +1,4 @@
 #get best top 5 models for both ksvm and mlp
-
 import pandas as pd
 
 def getTop5Rows(df, column):
@@ -16,7 +15,7 @@ top_mlp = getTop5Rows(mlp_df, "validation")
 # print(top_ksvm)
 
 total = pd.concat([top_ksvm, top_mlp])
-print(total)
 total.reset_index(level=0, inplace=True)
-
 total.to_csv("results/results_df.csv",index=True)
+
+

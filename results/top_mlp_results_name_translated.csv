@@ -1,0 +1,6 @@
+,model,feature_func,layers,lr,epochs,batchsize,Unnamed: 0,index,train,validation
+5,mlp,deepfeatures,"[1024, 3]",0.01,100,10,5,"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10",1.0,0.9933333333333332
+6,mlp,deepfeatures,"[1024, 3]",0.01,10000,10,6,"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=10000-batchsize=10",1.0,0.9933333333333332
+7,mlp,deepfeatures,"[1024, 3]",0.03,100,10,7,"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.03-epochs=100-batchsize=10",1.0,0.9933333333333332
+8,mlp,deepfeatures,"[1024, 3]",0.002,10000,10,8,"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.002-epochs=10000-batchsize=10",1.0,0.9933333333333332
+9,mlp,deepfeatures,"[1024, 3]",0.3,10000,10,9,"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.3-epochs=10000-batchsize=10",0.983580508474576,0.986666666666666

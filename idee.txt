@@ -29,3 +29,6 @@ Alla fine la KSVM con deepfeature da un risultato interessante:
     "validation": 0.9666666666666667
   },
 Potrebbe essere interessante provare valori in questo range con lr o col kparam
+
+VEDIAMO SE POSSIAMO USARE LA MIA MANO SU SFONDO BIANCO E VEDIAMO COSA SUCCEDE
+
