@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import os
 from train_ksvm import OVO_KSVM
 
-
 def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes):
 	labels, probs = model.inference(Xtest)
 
@@ -60,9 +59,8 @@ classes = os.listdir("dataset/test/")
 #Sort the name of the classes
 classes.sort()
 
-modelname = "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz"
-
-
+# modelname = "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz"
+modelname = "ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures.pkl"
 
 # RETRIEVE CHE CORRECT MODEL
 
@@ -70,12 +68,10 @@ if ".npz" in modelname:
 	modelname_stripped = modelname.rstrip(".npz")
 	model = pvml.MLP.load("models/%s" % modelname)
 elif ".pkl" in modelname:
-	model = OVO_KSVM().load(modelname)
+	model = OVO_KSVM().load("models/%s" % modelname)
 
 # END RETRIEVE
 
-
-
 #Load network
 
-getTestAccuracyAndConfusionMatrix(net, modelname, Xtest, Ytest, nclasses, classes)
+getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes)
