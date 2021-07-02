@@ -81,9 +81,8 @@ train_acc = (Ytrain == pred_label).mean()
 
 ## SAVE THE MODEL
 s = model.getAttributeString()
-model.save("models/ksvm_"+s+".pkl")
-
 modelname = "ksvm_"+s+"_"+feature_function
+model.save("models/%s.pkl" % modelname)
 
 ## LOAD VALIDATION DATA
 data = np.loadtxt("dataset_processed/validation-%s.txt.gz" % (feature_function))

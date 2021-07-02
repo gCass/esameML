@@ -72,9 +72,7 @@ if ".npz" in modelname:
 elif ".pkl" in modelname:
 	model = OVO_KSVM().load(modelname)
 
-	
-
-### END RETRIEVE
+# END RETRIEVE
 
 
 
