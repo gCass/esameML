@@ -45,6 +45,8 @@ def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, 
 	else:
 		plt.show()
 
+	plt.clf()
+
 	return acc
 
 
