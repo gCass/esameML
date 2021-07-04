@@ -1,1 +1,4 @@
-{"mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz": 0.9866666666666667, "ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures.pkl": 0.9533333333333334}
+{
+  "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz": 0.9866666666666667,
+  "ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures.pkl": 0.9533333333333334
+}
