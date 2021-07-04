@@ -27,6 +27,8 @@ nclasses = Ytrain.max() + 1
 
 layers = [inputl, nclasses]
 
+checkAccuracyCurve = False
+
 if len(sys.argv) > 2:
 	
 	epochs = int(sys.argv[2])
@@ -45,6 +47,10 @@ if len(sys.argv) > 2:
 		layers_string = s.split("_")
 		hiddenLayers = [int(s) for s in layers_string]		
 		layers[1:1] = hiddenLayers
+
+
+	if epochs == 100 and lr == 0.01 and batch_size == 10:
+		checkAccuracyCurve = True
 else:
 	hasHidden = False
 	hiddenLayers = [50]
@@ -71,12 +77,15 @@ modelname = "mlp-feature_func=%s-layers=%s-lr=%s-epochs=%d-batchsize=%d"\
 
 f = "results/mlp_results.json"
 results = dict_from_json(f)
-if modelname in results:
+if modelname in results and not checkAccuracyCurve:
 	print("already done, skip")
 	exit()
 
 
 ## TRAIN NETWORK
+# Define the arrays to check accuracy decreasing
+train_accs = []
+val_accs = []
 
 for epoch in range(epochs):
 	steps = Xtrain.shape[0] // batch_size #For processing all the data in the training steps
@@ -88,6 +97,9 @@ for epoch in range(epochs):
 	valid_acc = (predictions == Yval).mean()
 	# if epoch % 5 == 0:
 	# 	print(epoch ,"Train %f , Test %f" % (train_acc, test_acc))
+	if epochs % 2:
+		train_accs.append(train_acc)
+		val_accs.append(valid_acc)
 
 ## SAVE NETWORK
 
@@ -96,3 +108,7 @@ net.save("models/%s.npz" % modelname)
 ## SAVE ACCURACY RESULTS
 results[modelname] = {"train": train_acc, "validation": valid_acc}
 dict_to_json(f, results)
+
+## SAVE THE TRAINING AND VALIDATION CURVE
+curves = {"train_curve": train_accs, "valid_curve": val_accs, "nsample": epochs/2}
+dict_to_json("results/best_mlp_train_curves.json", curves)
