@@ -88,4 +88,4 @@ model = retrieveModel(modelname)
 path = "plots/confusion_matrix_%s.png" % modelname
 d[modelname] = getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=True, path=path)
 
-dict_to_json(d, "results/test_acurracy_best_models.json")
+dict_to_json("results/test_acurracy_best_models.json",d)
