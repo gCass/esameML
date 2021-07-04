@@ -48,8 +48,8 @@ if len(sys.argv) > 2:
 		hiddenLayers = [int(s) for s in layers_string]		
 		layers[1:1] = hiddenLayers
 
-
-	if epochs == 100 and lr == 0.01 and batch_size == 10:
+	# DEFINE THE NETWORK FOR WHICH WE WILL KEEP TRACK OF THE TRAIN CURVES
+	if epochs == 100 and lr == 0.01 and batch_size == 10 and chosen == 4:
 		checkAccuracyCurve = True
 else:
 	hasHidden = False
@@ -110,5 +110,6 @@ results[modelname] = {"train": train_acc, "validation": valid_acc}
 dict_to_json(f, results)
 
 ## SAVE THE TRAINING AND VALIDATION CURVE
-curves = {"train_curve": train_accs, "valid_curve": val_accs, "nsample": epochs/2}
-dict_to_json("results/best_mlp_train_curves.json", curves)
+if checkAccuracyCurve:
+	curves = {"train_curve": train_accs, "valid_curve": val_accs, "nsample": epochs/2}
+	dict_to_json("results/best_mlp_train_curves.json", curves)
