@@ -22,7 +22,7 @@ class OVO_KSVM:
 		self.b = b
 		self.Xtrain = X
 
-	def inference(self,X,Y):
+	def inference(self,X):
 		 return pvml.one_vs_one_ksvm_inference(X, self.Xtrain, self.alpha, self.b, self.kfun, self.kparam)
 
 	def save(self,path):
@@ -76,7 +76,7 @@ else:
 model.train(Xtrain, Ytrain)
 
 ## GET TRAINING ACCURACY
-pred_label, _ = model.inference(Xtrain, Ytrain)
+pred_label, _ = model.inference(Xtrain)
 train_acc = (Ytrain == pred_label).mean()
 
 ## SAVE THE MODEL
@@ -90,7 +90,7 @@ Xval = data[:, :-1]
 Yval = data[:, -1].astype(int)
 
 ## GET VALIDATION ACCURACY
-pred_label, _ = model.inference(Xval, Yval)
+pred_label, _ = model.inference(Xval)
 validation_acc = (Yval == pred_label).mean()
 
 ## SAVE ACCURACY RESULTS

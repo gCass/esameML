@@ -16,7 +16,7 @@ if FIXED:
 
 for chosen_number in range(start, 5):
 	## EXTRACT RANDOMLY 3 TIMES FOR EACH CHOSEN NUMBER A SET OF HYPERPARAMETERS
-	for i in range(0,3):
+	for i in range(0,10):
 		print("Doing ",chosen_number, i)
 		lambda_ = random.choice(lambdas)
 		gamma = random.choice(gammas)
