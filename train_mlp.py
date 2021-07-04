@@ -97,7 +97,8 @@ for epoch in range(epochs):
 	valid_acc = (predictions == Yval).mean()
 	# if epoch % 5 == 0:
 	# 	print(epoch ,"Train %f , Test %f" % (train_acc, test_acc))
-	if epochs % 2:
+	if epoch % 2:
+		print("Appending")
 		train_accs.append(train_acc)
 		val_accs.append(valid_acc)
 
