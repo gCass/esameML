@@ -45,6 +45,8 @@ def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, 
 	else:
 		plt.show()
 
+	return acc
+
 
 #Build confusion matrix a see if there is any sense in the confusion to see which kind of cakes
 #are confused
