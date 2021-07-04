@@ -80,7 +80,7 @@ d = {}
 modelname = "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz"
 model = retrieveModel(modelname)
 path = "plots/confusion_matrix_%s.png" % modelname
-d[modelna] = getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=True, path=path)
+d[modelname] = getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=True, path=path)
 
 ## CONFUSION MATRIX FOR BEST MLP
 modelname = "ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures.pkl"
