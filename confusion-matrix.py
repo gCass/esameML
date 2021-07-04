@@ -3,12 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from train_ksvm import OVO_KSVM
+from dict_to_file import *
 
-def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes):
+def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=False, path=None):
 	labels, probs = model.inference(Xtest)
 
 	acc = (Ytest == labels).mean()
-	print(acc)
+	print("Accuracy",acc)
 
 	cm = np.zeros((nclasses, nclasses))
 
@@ -39,7 +40,10 @@ def getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, 
 	plt.yticks(range(nclasses),classes) 
 	plt.title("Confusion matrix")
 	plt.tight_layout()
-	plt.show()
+	if save and path is not None:
+		plt.savefig(path)
+	else:
+		plt.show()
 
 
 #Build confusion matrix a see if there is any sense in the confusion to see which kind of cakes
@@ -59,19 +63,29 @@ classes = os.listdir("dataset/test/")
 #Sort the name of the classes
 classes.sort()
 
-# modelname = "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz"
+# FUCNTION TO RETRIEVE CHE CORRECT MODEL
+def retrieveModel(modelname):
+	if ".npz" in modelname:
+		modelname_stripped = modelname.rstrip(".npz")
+		model = pvml.MLP.load("models/%s" % modelname)
+	elif ".pkl" in modelname:
+		model = OVO_KSVM()
+		print("models/%s" % modelname)
+		model.load("models/%s" % modelname)
+		print(model.__dict__)
+	return model 
+
+d = {}
+## CONFUSION MATRIX FOR BEST KSVM
+modelname = "mlp-feature_func=deepfeatures-layers=[1024, 3]-lr=0.01-epochs=100-batchsize=10.npz"
+model = retrieveModel(modelname)
+path = "plots/confusion_matrix_%s.png" % modelname
+d[modelna] = getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=True, path=path)
+
+## CONFUSION MATRIX FOR BEST MLP
 modelname = "ksvm_kfun=rbf_lambda_=0.03_kparam=0.03_lr=0.1__deepfeatures.pkl"
+model = retrieveModel(modelname)
+path = "plots/confusion_matrix_%s.png" % modelname
+d[modelname] = getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes, save=True, path=path)
 
-# RETRIEVE CHE CORRECT MODEL
-
-if ".npz" in modelname:
-	modelname_stripped = modelname.rstrip(".npz")
-	model = pvml.MLP.load("models/%s" % modelname)
-elif ".pkl" in modelname:
-	model = OVO_KSVM().load("models/%s" % modelname)
-
-# END RETRIEVE
-
-#Load network
-
-getTestAccuracyAndConfusionMatrix(model, modelname, Xtest, Ytest, nclasses, classes)
+dict_to_file(d, "results/test_acurracy_best_models.json")
