@@ -20,8 +20,11 @@ df["validation"] = df["validation"] * 100
 # x = total.index
 # y1 = 
 # print(a)
+df.sort_values(by=["validation"],inplace=True, ascending=False)
 df[["train","validation"]].plot.barh()
 plt.title("Train and validation accuracy")
+plt.ylabel("Model index")
+plt.xlabel("Accuracy")
 plt.tight_layout()	
-plt.show()
+plt.savefig("plots/train_and_validation_accuracy")
 
