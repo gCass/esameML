@@ -1,0 +1,6 @@
+function,model,kfun,lambda,kparam,lr,index,train,validation
+color_histogram,ksvm,rbf,0.3,0.1,0.1,ksvm_kfun=rbf_lambda_=0.3_kparam=0.001_lr=0.01__color_histogram,0.344279661016949,0.33333333333333304
+cooccurrence_matrix,ksvm,rbf,0.1,0.2,0.1,ksvm_kfun=rbf_lambda_=0.1_kparam=0.003_lr=0.003__cooccurrence_matrix,0.344279661016949,0.33333333333333304
+deepfeatures,ksvm,rbf,0.3,0.3,0.1,ksvm_kfun=rbf_lambda_=0.3_kparam=0.001_lr=0.01__deepfeatures,0.9242584745762711,0.9666666666666661
+edge_direction_histogram,ksvm,rbf,0.002,0.2,0.1,ksvm_kfun=rbf_lambda_=0.002_kparam=0.2_lr=0.03__edge_direction_histogram,0.344279661016949,0.33333333333333304
+rgb_cooccurrence_matrix,ksvm,rbf,0.003,0.1,0.1,ksvm_kfun=rbf_lambda_=0.003_kparam=0.1_lr=0.003__rgb_cooccurrence_matrix,0.344279661016949,0.33333333333333304

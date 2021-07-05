@@ -11,7 +11,7 @@ cols = details.columns.tolist() + a.columns.tolist()
 df = pd.concat([details,a], ignore_index=True, axis=1)
 df.columns = cols
 
-m = df.groupby(by="function", axis=0).max("validation")
+m = df.iloc[df.groupby(by="function", axis=0)["validation"].idxmax(),:]
 m.to_excel("results/best_ksvm_for_each_category.xlsx")
 
 ## GET BEST MODEL FOR EACH LOW LEVEL FEATURE MLP
@@ -24,5 +24,5 @@ df.columns = cols
 df = df[df["epochs"] != 10000]
 # print(df[""].unique())
 
-m = df.groupby(by="feature_func", axis=0).max()
+m = df.iloc[df.groupby(by="feature_func", axis=0)["validation"].idxmax(),:]
 m.to_excel("results/best_mlp_for_each_category.xlsx")

@@ -13,8 +13,11 @@ nsample = int(json["nsample"])
 # print(valid)
 # print(nsample)
 
-plt.plot(range(nsample), train)
-plt.plot(range(nsample), valid)
+plt.plot(range(0,nsample*2, 2), train)
+plt.plot(range(0,nsample*2, 2), valid)
+plt.title("Train and validation versus epochs")
+plt.xlabel("epoch")
+plt.ylabel("accuracy")
 plt.show()
 
 # print()
